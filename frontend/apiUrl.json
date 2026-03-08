@@ -1,0 +1,18 @@
+{
+  "Login": "/auth/login",
+  "Register": "/auth/register",
+  "Logout": "/auth/logout",
+  "GetProfile": "/profile",
+  "ChangePhoto": "/auth/uploadImage",
+  "GetProducts": "/products",
+  "GetCart": "/cart",
+  "AddToCart": "/cart/add",
+  "RemoveFromCart": "/cart/remove",
+  "SendMessage": "/contact/sendmessage",
+  "ApplyCoupon": "/auth/applyCoupon",
+  "SaveUserAddress": "/address/save-address",
+  "GetUserAddress": "/address/get-address",
+  "SavePaymentMethod": "/payment/save",
+  "GetPaymentMethod": "/payment/get",
+  "PlaceOrder": "/order/place-order"
+}
