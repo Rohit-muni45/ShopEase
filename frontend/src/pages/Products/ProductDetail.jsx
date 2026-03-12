@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import { showErrorToast, showSuccessToast } from "../../components/Toaster";
 import apiUrl from "../../../apiUrl.json";
@@ -8,11 +8,11 @@ import Loader from "../../components/Loader";
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { fetchCartCount } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [similar, setSimilar] = useState([]);
-
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("");
@@ -213,7 +213,7 @@ const ProductDetail = () => {
             {similar.map((item) => (
               <div
                 key={item._id}
-                onClick={() => (window.location.href = `/product/${item._id}`)}
+                onClick={() => navigate(`/product/${item._id}`)}
                 className="bg-white rounded-lg shadow hover:shadow-lg transition p-4 cursor-pointer"
               >
                 <img
