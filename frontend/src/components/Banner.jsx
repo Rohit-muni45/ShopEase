@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BannerImage from "../assets/Hero-Image.png"
 
 function Banner() {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Banner() {
         {/* Right Image (Circled Part) */}
         <div className="hidden md:flex w-1/2 justify-end">
           <img
-            src="../../src/assets/Hero-Image.png"
+            src={BannerImage}
             alt="ShopEase Banner Illustration"
             className="h-84 object-contain"
           />
