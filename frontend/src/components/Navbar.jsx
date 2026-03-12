@@ -11,10 +11,15 @@ const Navbar = () => {
   const { cartCount } = useContext(CartContext);
   const navigate = useNavigate();
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleLogout = () => {
     logout();
     setProfileDropdown(false);
     navigate("/signin");
+    setOpen(false);
   };
 
   return (
@@ -30,7 +35,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 text-gray-600 font-medium">
-          <Link to="/" className="hover:text-indigo-600">
+          <Link to="/" onClick={handleClose} className="hover:text-indigo-600">
             Home
           </Link>
           <Link to="/products" className="hover:text-indigo-600">
@@ -61,6 +66,7 @@ const Navbar = () => {
             <>
               <Link
                 to="/signin"
+                onClick={handleClose}
                 className="px-4 py-2 border rounded-md hover:bg-gray-100 transition cursor-pointer"
               >
                 Login
@@ -69,7 +75,10 @@ const Navbar = () => {
           ) : (
             <div className="relative">
               <button
-                onClick={() => setProfileDropdown(!profileDropdown)}
+                onClick={() => {
+                  setProfileDropdown(!profileDropdown);
+                  setOpen(false);
+                }}
                 className="border rounded-full w-8 h-8 overflow-hidden flex items-center justify-center cursor-pointer"
               >
                 <img
@@ -115,20 +124,40 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {open && (
-        <div className="md:hidden bg-white px-6 py-4 space-y-4 border-t text-gray-600 font-medium">
-          <Link to="/" className="block hover:text-indigo-600">
+        <div className="md:hidden fixed top-14 left-0 w-full bg-white px-6 py-6 space-y-4 border-t text-gray-600 font-medium shadow-lg z-40">
+          <Link
+            to="/"
+            onClick={handleClose}
+            className="block hover:text-indigo-600"
+          >
             Home
           </Link>
-          <Link to="/products" className="block hover:text-indigo-600">
+          <Link
+            to="/products"
+            onClick={handleClose}
+            className="block hover:text-indigo-600"
+          >
             Products
           </Link>
-          <Link to="/about" className="block hover:text-indigo-600">
+          <Link
+            to="/about"
+            onClick={handleClose}
+            className="block hover:text-indigo-600"
+          >
             About
           </Link>
-          <Link to="/contact" className="block hover:text-indigo-600">
+          <Link
+            to="/contact"
+            onClick={handleClose}
+            className="block hover:text-indigo-600"
+          >
             Contact
           </Link>
-          <Link to="/cart" className="block hover:text-indigo-600">
+          <Link
+            to="/cart"
+            onClick={handleClose}
+            className="block hover:text-indigo-600"
+          >
             Cart
           </Link>
 
@@ -136,6 +165,7 @@ const Navbar = () => {
             <>
               <Link
                 to="/signin"
+                onClick={handleClose}
                 className="block px-4 py-2 border rounded-md hover:bg-gray-100 transition text-center"
               >
                 Login
@@ -144,7 +174,10 @@ const Navbar = () => {
           ) : (
             <>
               <button
-                onClick={() => setProfileDropdown(!profileDropdown)}
+                onClick={() => {
+                  setProfileDropdown(!profileDropdown);
+                  setOpen(false);
+                }}
                 className="w-full px-4 py-2 border rounded-md text-left hover:bg-gray-100 transition"
               >
                 {user.name}

@@ -44,6 +44,11 @@ const ProductDetail = () => {
 
   // Function to add product to cart
   const addToCart = async () => {
+    const user = localStorage.getItem("user");
+    if (!user) {
+      showErrorToast("Please login to add items to your cart");
+      return;
+    }
     try {
       await api.post(apiUrl.AddToCart, { productId: product._id, qty: 1 });
       showSuccessToast("Product added to cart");
