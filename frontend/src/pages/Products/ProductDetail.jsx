@@ -224,7 +224,7 @@ const ProductDetail = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-48 object-cover rounded-md"
+                  className="w-full h-48 object-contain rounded-md"
                 />
                 <h3 className="text-lg font-semibold text-gray-900 mt-3">
                   {item.title}

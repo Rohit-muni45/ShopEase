@@ -82,7 +82,7 @@ const Products = () => {
                 src={product.image}
                 alt={product.title}
                 onClick={() => handleClick(product._id)}
-                className="w-full h-52 object-cover rounded-lg mb-2 cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg mb-2 cursor-pointer"
               />
               <h3 className="text-lg font-semibold text-gray-800">
                 {product.title}
