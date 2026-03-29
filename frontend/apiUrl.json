@@ -14,5 +14,6 @@
   "GetUserAddress": "/address/get-address",
   "SavePaymentMethod": "/payment/save",
   "GetPaymentMethod": "/payment/get",
-  "PlaceOrder": "/order/place-order"
+  "PlaceOrder": "/order/place-order",
+  "GetOrders": "/order/my-orders"
 }

@@ -18,27 +18,24 @@ exports.placeOrder = async (req, res) => {
       return res.status(400).json({ message: "Address not found" });
     }
 
-    const items = cart.items.map(i => ({
+    const items = cart.items.map((i) => ({
       product: i.product._id,
       qty: i.qty,
-      price: i.product.price
+      price: i.product.price,
     }));
 
-    const subtotal = items.reduce(
-      (sum, i) => sum + i.price * i.qty,
-      0
-    );
+    const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
 
     const total = subtotal - discount;
 
     const order = new Order({
       user: userId,
       items,
-      address: userAddress,     // save address object or reference
+      address: userAddress, // save address object or reference
       paymentMethod,
       subtotal,
       discount,
-      total
+      total,
     });
 
     await order.save();
@@ -48,11 +45,28 @@ exports.placeOrder = async (req, res) => {
 
     res.json({
       message: "Order placed successfully",
-      orderId: order._id
+      orderId: order._id,
     });
-
   } catch (error) {
-    console.error("Place order error:", error);  
-    res.status(500).json({ message: "Failed to place order", error: error.message });
+    console.error("Place order error:", error);
+    res
+      .status(500)
+      .json({ message: "Failed to place order", error: error.message });
+  }
+};
+
+// get all orders
+exports.getUserOrders = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const orders = await Order.find({ user: userId })
+      .populate("items.product")
+      .sort({ createdAt: -1 });
+
+    res.json(orders);
+  } catch (error) {
+    console.error("Fetch orders error:", error);
+    res.status(500).json({ message: "Failed to fetch orders" });
   }
 };
