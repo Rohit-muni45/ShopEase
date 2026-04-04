@@ -14,7 +14,7 @@ const products = [
     category: "fragrances"
   },
   {
-    title: "Chanel Coco Noir Eau De",
+    title: "Chanel Coco Noir",
     description: "Luxury perfume with long-lasting scent.",
     price: 129.99,
     image: "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/thumbnail.webp",
