@@ -6,6 +6,7 @@ import {
   showSuccessToast,
 } from "../../components/Toaster";
 import { AuthContext } from "../../context/AuthContext";
+import Signinimg from "../../assets/Signin.png"
 
 const Signin = () => {
   const { login } = useContext(AuthContext);
@@ -158,9 +159,10 @@ const Signin = () => {
 
         <div className="relative text-center px-10">
           <img
-            src="https://img.freepik.com/free-vector/ecommerce-web-page-concept-illustration_114360-8183.jpg"
+            //src="https://img.freepik.com/free-vector/ecommerce-web-page-concept-illustration_114360-8183.jpg"
+            src={Signinimg}
             alt="E-commerce Illustration"
-            className="mx-auto mb-6 rounded-2xl shadow-lg w-80"
+            className="mx-auto mb-6 rounded-2xl shadow-lg "
           />
           <h2 className="text-2xl font-semibold mb-4">
             Welcome to <span className="text-yellow-300">ShopEase</span>
